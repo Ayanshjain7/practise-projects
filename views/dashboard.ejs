@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Teacher Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>Welcome, <%= teacher %> 👩‍🏫</h1>
+  <h2>Student Attendance</h2>
+
+  <table border="1" cellpadding="10">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Status</th>
+    </tr>
+
+    <% students.forEach(student=> { %>
+      <tr>
+        <td>
+          <%= student.id %>
+        </td>
+        <td>
+          <%= student.name %>
+        </td>
+        <td>
+          <%= student.status %>
+        </td>
+        <td>
+          <!-- Present Button -->
+          <form action="/mark" method="POST" style="display:inline;">
+            <input type="hidden" name="id" value="<%= student.id %>">
+            <input type="hidden" name="status" value="Present">
+            <button type="submit">Present</button>
+          </form>
+
+          <!-- Absent Button -->
+          <form action="/mark" method="POST" style="display:inline;">
+            <input type="hidden" name="id" value="<%= student.id %>">
+            <input type="hidden" name="status" value="Absent">
+            <button type="submit">Absent</button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+
+  </table>
+
+  <br>
+  <a href="/">Logout</a>
+</body>
+
+</html>

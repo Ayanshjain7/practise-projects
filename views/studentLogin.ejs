@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Student Login</h1>
+  <form action="/student" method="POST">
+    <label>Enter Student ID:</label>
+    <input type="number" name="id" required>
+    <button type="submit">Login</button>
+  </form>
+
+  <% if (error) { %>
+    <p style="color:red;"><%= error %></p>
+  <% } %>
+
+  <br>
+  <a href="/">⬅ Back to Home</a>
+</body>
+</html>
